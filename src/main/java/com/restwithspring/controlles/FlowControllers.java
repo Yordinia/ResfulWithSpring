@@ -20,42 +20,31 @@ public class FlowControllers {
         this.flowService = flowService;
     }
 
-    // GEt ALL FLOw
     @GetMapping("/get-all")
-
-
     public List<Flow> getAllFlows(){
         return flowService.getAllFlows();
     }
 
-    // Find FLow By Id
     @GetMapping("/find/{id}")
     public ResponseEntity<Flow> getFlowById(@PathVariable Long id){
         return flowService.getFlowById(id);
     }
     // Posting
     @PostMapping
-    public ResponseEntity<Flow> setFlow(@RequestBody Flow flow){
-    Flow createdFlow = flowRepository.save(flow);
-    return new ResponseEntity<>(createdFlow, HttpStatus.CREATED);
+    public ResponseEntity<Flow> setFlow(@RequestBody Flow flow) {
+        return flowService.setFlow(flow);
     }
+
     // Editing / updating
-    public ResponseEntity<Flow> updateFlow(@RequestBody Flow updatedFlow, @PathVariable Long id){
-        Optional<Flow> optFlow = flowRepository.findById(id);
-        return optFlow.map(flow1 ->{
-            String newName = updatedFlow.getName();
-            flow1.setName(newName);
-            return new ResponseEntity<>(flow1, HttpStatus.OK);
-        } ).orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Flow> updateFlow(@RequestBody Flow updatedFlow, @PathVariable Long id) {
+       return flowService.updateFlow(updatedFlow, id);
     }
+
     // DELEting
-    public ResponseEntity<String> deleteFlow(@PathVariable Long id){
-        if(flowRepository.existsById(id)){
-            flowRepository.deleteById(id);
-        return new ResponseEntity<>( HttpStatus.NO_CONTENT);
-        }
-        else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<String> deleteFlow(@PathVariable Long id) {
+        return flowService.deleteFlow(id);
     }
+
 }
 
 

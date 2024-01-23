@@ -2,6 +2,7 @@ package com.restwithspring.controlles;
 
 import com.restwithspring.Step;
 import com.restwithspring.controlles.services.StepRepository;
+import com.restwithspring.controlles.services.StepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,51 +14,41 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/steps")
 public class StepController {
-    private final StepRepository stepRepository;
+    private final StepService stepService;
     @Autowired
-    public StepController(StepRepository stepRepository) {
-        this.stepRepository = stepRepository;
+    public StepController(StepService stepService) {
+        this.stepService = stepService;
     }
+
     // Get all steps
     @GetMapping("/get-all")
     public List<Step> getAllSteps(){
-        return stepRepository.findAll();
+        return stepService.getAllSteps();
     }
 
-    // Get step by id
     @GetMapping("/{id}")
-    public ResponseEntity<Step> getStepById(@PathVariable Long id){
-        Optional<Step> optionalStep = stepRepository.findById(id);
-        return optionalStep.map(step -> new ResponseEntity<>(step, HttpStatus.NOT_FOUND))
-                .orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Step> getStepById(@PathVariable Long id) {
+        return stepService.getStepById(id);
     }
+
     // post a step
     @PostMapping
-    public ResponseEntity<Step> postStep(@RequestBody Step step){
-        stepRepository.save(step);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Step> postStep(@RequestBody Step step) {
+        return stepService.postStep(step);
     }
+
     // update  a step
     @PutMapping
-    public ResponseEntity<Step> updateStep(@PathVariable Long id, @RequestBody Step newStep){
-        Optional<Step> optionalStep = stepRepository.findById(id);
-        String newType = newStep.getType();
-        return optionalStep.map(step ->{
-            step.setType(newType);
-            return new ResponseEntity<>(step, HttpStatus.OK);
-        } ).orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Step> updateStep(@PathVariable Long id, @RequestBody Step newStep) {
+        return stepService.updateStep(id, newStep);
     }
+
     // delete a step
     @DeleteMapping
-    public ResponseEntity deleteStep(@PathVariable Long id){
-        if (stepRepository.existsById(id)){
-            stepRepository.deleteById(id);
-            return new ResponseEntity<>("Deleted", HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+    public ResponseEntity deleteStep(@PathVariable Long id) {
+        return stepService.deleteStep(id);
     }
+
 }
 
 
