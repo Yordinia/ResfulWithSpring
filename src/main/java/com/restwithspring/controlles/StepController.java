@@ -2,7 +2,6 @@ package com.restwithspring.controlles;
 
 import com.restwithspring.Step;
 import com.restwithspring.controlles.services.StepRepository;
-import com.restwithspring.controlles.services.StepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +13,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/steps")
 public class StepController {
-    private final StepService stepService;
-    @Autowired
-    public StepController(StepService stepService) {
-        this.stepService = stepService;
-    }
-
     private final StepRepository stepRepository;
-    //@Autowired
+    @Autowired
     public StepController(StepRepository stepRepository) {
         this.stepRepository = stepRepository;
     }

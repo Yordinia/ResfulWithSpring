@@ -2,31 +2,36 @@ package com.restwithspring.controlles;
 
 
 import com.restwithspring.Flow;
-import com.restwithspring.controlles.services.FlowRepository;
+import com.restwithspring.controlles.services.FlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/flow")
 public class FlowControllers {
-    private final FlowRepository flowRepository;
-
+    private final FlowService flowService;
     @Autowired
-    public FlowControllers(FlowRepository flowRepository) {
-        this.flowRepository = flowRepository;
+    public FlowControllers(FlowService flowService) {
+        this.flowService = flowService;
+    }
+
+    // GEt ALL FLOw
+    @GetMapping("/get-all")
+
+
+    public List<Flow> getAllFlows(){
+        return flowService.getAllFlows();
     }
 
     // Find FLow By Id
-    @GetMapping
+    @GetMapping("/find/{id}")
     public ResponseEntity<Flow> getFlowById(@PathVariable Long id){
-        Optional<Flow> oFlow = flowRepository.findById(id);
-        return oFlow.map(flow1-> new ResponseEntity<>(flow1, HttpStatus.OK))
-                .orElseGet(()->new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return flowService.getFlowById(id);
     }
     // Posting
     @PostMapping
@@ -50,10 +55,6 @@ public class FlowControllers {
         return new ResponseEntity<>( HttpStatus.NO_CONTENT);
         }
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-    // GEt ALL FLOW
-    public List<Flow> GetAllFlows(){
-        return flowRepository.findAll();
     }
 }
 

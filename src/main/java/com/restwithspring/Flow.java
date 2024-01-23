@@ -13,7 +13,7 @@ public class Flow {
     private String name;
     private LocalDateTime createdDate;
 
-    @OneToMany
+    @OneToMany(mappedBy = "flow", cascade = CascadeType.ALL)
     private List<Step> step;
 
     public Long getId() {
