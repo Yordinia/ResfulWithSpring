@@ -1,15 +1,12 @@
 package com.restwithspring.controlles;
 
 import com.restwithspring.Step;
-import com.restwithspring.controlles.services.StepRepository;
 import com.restwithspring.controlles.services.StepService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/steps")
@@ -21,7 +18,7 @@ public class StepController {
     }
 
     // Get all steps
-    @GetMapping("/get-all")
+    @GetMapping
     public List<Step> getAllSteps(){
         return stepService.getAllSteps();
     }
@@ -38,31 +35,14 @@ public class StepController {
     }
 
     // update  a step
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Step> updateStep(@PathVariable Long id, @RequestBody Step newStep) {
         return stepService.updateStep(id, newStep);
     }
 
     // delete a step
-    @DeleteMapping
-    public ResponseEntity deleteStep(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStep(@PathVariable Long id) {
         return stepService.deleteStep(id);
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
