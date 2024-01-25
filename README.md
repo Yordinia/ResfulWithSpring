@@ -1,6 +1,5 @@
 # ResfulWithSpring 👋 
-<div align='center'>  <img src='https://github.com/Yordinia/yordinia/blob/main/Module-2/img/Rabbit.png' style='width:10vw'> </div>
-## Microservices
+# Microservices
 
 VoteMicroservice is a Spring Boot microservice application for managing flows and steps.
 
@@ -16,6 +15,7 @@ VoteMicroservice is a Spring Boot microservice application for managing flows an
 - [Contact](#contact)
 
 # Welcome to Microservices with SpringBoot, Restful APIs, React flow UIs
+<div align='center'>  <img src='https://github.com/Yordinia/yordinia/blob/main/Module-2/img/Rabbit.png' style='width:10vw'> </div>
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
