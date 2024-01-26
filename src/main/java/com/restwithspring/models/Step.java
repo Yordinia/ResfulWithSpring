@@ -1,9 +1,14 @@
 package com.restwithspring.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "step_type")
+@Getter
+@Setter
 public class Step {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,24 +16,4 @@ public class Step {
     private String type;
     @ManyToOne
     private Flow flow;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Flow getFlow() {
-        return flow;
-    }
-
-    public void setFlow(Flow flow) {
-        this.flow = flow;
-    }
 }
