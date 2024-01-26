@@ -1,7 +1,7 @@
 package com.restwithspring.controlles;
 
-import com.restwithspring.Flow;
-import com.restwithspring.controlles.services.FlowService;
+import com.restwithspring.models.Flow;
+import com.restwithspring.services.FlowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

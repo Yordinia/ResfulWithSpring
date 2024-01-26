@@ -1,6 +1,6 @@
-package com.restwithspring.controlles.services;
+package com.restwithspring.repositories;
 
-import com.restwithspring.EchoStep;
+import com.restwithspring.models.EchoStep;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EchoStepRepository extends JpaRepository<EchoStep, Long> {

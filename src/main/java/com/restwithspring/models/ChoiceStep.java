@@ -1,4 +1,4 @@
-package com.restwithspring;
+package com.restwithspring.models;
 
 import jakarta.persistence.Entity;
 

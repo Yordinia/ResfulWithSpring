@@ -1,7 +1,7 @@
 package com.restwithspring.controlles;
 
-import com.restwithspring.Step;
-import com.restwithspring.controlles.services.StepService;
+import com.restwithspring.models.Step;
+import com.restwithspring.services.StepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
