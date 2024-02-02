@@ -8,11 +8,11 @@
 		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.restwithspring</groupId>
-	<artifactId>restwithspring</artifactId>
+	<groupId>com.ResfulWithSpring</groupId>
+	<artifactId>ResfulWithSpring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>restwithspring</name>
-	<description>Demo project for Spring Boot</description>
+	<name>ResfulWithSpring</name>
+	<description>A project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

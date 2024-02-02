@@ -1,6 +1,6 @@
-package com.restwithspring.repositories;
+package com.ResfulWithSpring.repositories;
 
-import com.restwithspring.models.Flow;
+import com.ResfulWithSpring.models.Flow;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

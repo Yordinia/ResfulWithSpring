@@ -1,7 +1,9 @@
-package com.restwithspring.services;
+package com.ResfulWithSpring.services;
 
-import com.restwithspring.repositories.FlowRepository;
-import com.restwithspring.models.Flow;
+import com.ResfulWithSpring.ServiceInterface.FlowServiceInterface;
+import com.ResfulWithSpring.repositories.FlowRepository;
+import com.ResfulWithSpring.models.Flow;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,29 +13,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FlowService {
+@RequiredArgsConstructor
+public class FlowService implements FlowServiceInterface {
     private final FlowRepository flowRepository;
-
-    @Autowired
-    public FlowService(FlowRepository flowRepository) {
-        this.flowRepository = flowRepository;
-    }
-
-    public List<Flow> getAllFlows(){
+    @Override
+    public List<Flow> getAllFlows() {
         return flowRepository.findAll();
     }
 
-    public ResponseEntity<Flow> getFlowById(Long id){
+    @Override
+    public ResponseEntity<Flow> saveFlow(Flow flow) {
+        Flow createdFlow = flowRepository.save(flow);
+        return new ResponseEntity<>(createdFlow, HttpStatus.CREATED);
+    }
+    @Override
+    public ResponseEntity<Flow> findFlowById(Long id) {
         Optional<Flow> oFlow = flowRepository.findById(id);
         return oFlow.map(flow1-> new ResponseEntity<>(flow1, HttpStatus.OK))
                 .orElseGet(()->new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-    public ResponseEntity<Flow> saveFlow(Flow flow){
-        Flow createdFlow = flowRepository.save(flow);
-        return new ResponseEntity<>(createdFlow, HttpStatus.CREATED);
-    }
-
     public ResponseEntity<Flow> updateFlow(Flow updatedFlow, Long id){
         Optional<Flow> optFlow = flowRepository.findById(id);
         return optFlow.map(flow1 ->{

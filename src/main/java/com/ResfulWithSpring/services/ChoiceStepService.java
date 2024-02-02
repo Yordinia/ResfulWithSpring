@@ -1,6 +1,6 @@
-package com.restwithspring.services;
+package com.ResfulWithSpring.services;
 
-import com.restwithspring.repositories.ChoiceStepRepository;
+import com.ResfulWithSpring.repositories.ChoiceStepRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

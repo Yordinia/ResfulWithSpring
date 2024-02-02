@@ -1,13 +1,12 @@
-package com.restwithspring;
+package com.ResfulWithSpring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestwithspringApplication {
-
+public class ResfulWithSpring {
 	public static void main(String[] args) {
-		SpringApplication.run(RestwithspringApplication.class, args);
+		SpringApplication.run(ResfulWithSpring.class, args);
 	}
 
 }

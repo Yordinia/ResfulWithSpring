@@ -1,6 +1,6 @@
-package com.restwithspring.repositories;
+package com.ResfulWithSpring.repositories;
 
-import com.restwithspring.models.Step;
+import com.ResfulWithSpring.models.Step;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StepRepository extends JpaRepository<Step, Long> {

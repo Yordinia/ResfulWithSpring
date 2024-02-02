@@ -1,6 +1,6 @@
-package com.restwithspring.services;
+package com.ResfulWithSpring.services;
 
-import com.restwithspring.repositories.EndStepRepository;
+import com.ResfulWithSpring.repositories.EndStepRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

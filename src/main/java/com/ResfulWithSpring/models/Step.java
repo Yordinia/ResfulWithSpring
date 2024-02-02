@@ -1,4 +1,4 @@
-package com.restwithspring.models;
+package com.ResfulWithSpring.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,6 +13,7 @@ public class Step {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
+    private String description;
     @ManyToOne
     private Flow flow;
 }
