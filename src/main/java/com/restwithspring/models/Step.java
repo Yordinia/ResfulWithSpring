@@ -7,8 +7,7 @@ import lombok.Setter;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "step_type")
-@Getter
-@Setter
+@Setter @Getter
 public class Step {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
