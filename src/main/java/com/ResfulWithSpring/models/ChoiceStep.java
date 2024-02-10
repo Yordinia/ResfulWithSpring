@@ -11,6 +11,6 @@ import lombok.Setter;
 @Getter
 public class ChoiceStep extends Step{
     private String condition;
-    private String trueStep;
-    private String falseStep;
+    private String correctStep;
+    private String incorrectStep;
 }

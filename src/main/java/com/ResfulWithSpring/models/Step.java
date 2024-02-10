@@ -4,16 +4,16 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "step_type")
 @Setter @Getter
+@DiscriminatorColumn(name = "step_type")
 public class Step {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
     private String description;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Flow flow;
 }

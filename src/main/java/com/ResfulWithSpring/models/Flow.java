@@ -1,11 +1,19 @@
 package com.ResfulWithSpring.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Flow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,33 +21,6 @@ public class Flow {
     private String name;
     private LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "flow", cascade = CascadeType.ALL)
-    private List<Step> step;
-
-    public Long getId() {
-        return id;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public List<Step> getStep() {
-        return step;
-    }
-
-    public void setStep(List<Step> step) {
-        this.step = step;
-    }
+//    @OneToMany(mappedBy = "flow", cascade = CascadeType.ALL)
+//    private List<Step> steps = new ArrayList<>();
 }

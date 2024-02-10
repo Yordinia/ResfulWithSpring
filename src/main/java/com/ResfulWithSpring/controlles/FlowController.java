@@ -32,7 +32,6 @@ public class FlowController {
         return flowService.findFlowById(id);
     }
     // update  a flow
-
     @PutMapping("/{id}")
     public ResponseEntity<Flow> updateFlow (@PathVariable Long id, @RequestBody Flow newFlow){
         return flowService.updateFlow(newFlow, id);

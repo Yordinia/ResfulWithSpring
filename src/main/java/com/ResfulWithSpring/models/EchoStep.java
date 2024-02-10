@@ -10,5 +10,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class EchoStep extends Step{
-    private String message;
+    private String message = "Welcome!";
+    public EchoStep(){}
+    public EchoStep(String message) {
+        this.message = message;
+    }
 }

@@ -8,5 +8,7 @@ public class ResfulWithSpring {
 	public static void main(String[] args) {
 		SpringApplication.run(ResfulWithSpring.class, args);
 	}
+	public static void RuntimeException(){
 
+	}
 }

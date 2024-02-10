@@ -1,5 +1,6 @@
 package com.ResfulWithSpring.services;
 
+import com.ResfulWithSpring.Exceptions.CouldNotFindException;
 import com.ResfulWithSpring.ServiceInterface.FlowServiceInterface;
 import com.ResfulWithSpring.repositories.FlowRepository;
 import com.ResfulWithSpring.models.Flow;
@@ -38,7 +39,7 @@ public class FlowService implements FlowServiceInterface {
             String newName = updatedFlow.getName();
             flow1.setName(newName);
             return new ResponseEntity<>(flow1, HttpStatus.OK);
-        } ).orElseGet(()-> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        }).orElseThrow(()-> new CouldNotFindException("Could Not Find Flow with id- "+id));
     }
 
     public ResponseEntity<Void> deleteFlow(Long id){
